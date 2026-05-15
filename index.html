@@ -1244,7 +1244,7 @@ function showToast(msg) {
 }
 
 // ---- FORMS ----
-function submitReservation() {
+window.submitReservation = async function () {
   const n = document.getElementById('resFirstName').value;
   const e = document.getElementById('resEmail').value;
   const d = document.getElementById('resDate').value;
@@ -1266,7 +1266,7 @@ function submitReservation() {
   document.querySelectorAll('#reservation input, #reservation select, #reservation textarea').forEach(el => el.value = '');
 }
 
-function submitContact() {
+window.submitReservation = async function () {
   const n = document.getElementById('ctName').value;
   const e = document.getElementById('ctEmail').value;
   const m = document.getElementById('ctMessage').value;
@@ -1303,6 +1303,30 @@ localStorage.setItem('obsidian_visits', JSON.stringify(visits));
 const pages = JSON.parse(localStorage.getItem('obsidian_pages') || '{}');
 pages['Home'] = (pages['Home'] || 0) + 1;
 localStorage.setItem('obsidian_pages', JSON.stringify(pages));
+</script>
+  <script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+  getFirestore,
+  collection,
+  addDoc
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyACQKL4YX991zC1wjGTN55mfS__W9gKJEs",
+  authDomain: "obsidian-cafe.firebaseapp.com",
+  projectId: "obsidian-cafe",
+  storageBucket: "obsidian-cafe.firebasestorage.app",
+  messagingSenderId: "41349862432",
+  appId: "1:41349862432:web:2ef93e2416623782669845",
+  measurementId: "G-6P8FSM50BS"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
 </script>
 </body>
 </html>
