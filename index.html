@@ -1270,7 +1270,10 @@ window.submitReservation = async function () {
   const n = document.getElementById('ctName').value;
   const e = document.getElementById('ctEmail').value;
   const m = document.getElementById('ctMessage').value;
-  if (!n || !e || !m) { showToast('Please fill in all fields'); return; }
+ if (!n || !e) {
+  showToast('Please fill in required fields');
+  return;
+}
   const messages = JSON.parse(localStorage.getItem('obsidian_messages') || '[]');
   messages.push({
     id: Date.now(), name: n, email: e,
