@@ -1245,9 +1245,9 @@ function showToast(msg) {
 
 // ---- FORMS ----
 window.submitReservation = async function () {
-  const n = document.getElementById('resFirstName').value;
-  const e = document.getElementById('resEmail').value;
-  const d = document.getElementById('resDate').value;
+  const n = document.getElementById('resFirstName')?.value || "";
+  const e = document.getElementById('resEmail')?.value || "";
+  const d = document.getElementById('resDate')?.value || "Not Selected";
   if (!n || !e || !d) { showToast('Please fill in all required fields'); return; }
   // Save to localStorage for admin
   const reservations = JSON.parse(localStorage.getItem('obsidian_reservations') || '[]');
